@@ -11,7 +11,6 @@ public class RemoveNthNodeFromEndOfList {
         Solution solution = new RemoveNthNodeFromEndOfList().new Solution();
     }
 
-    //leetcode submit region begin(Prohibit modification and deletion)
 
     public class ListNode {
         int val;
@@ -30,11 +29,25 @@ public class RemoveNthNodeFromEndOfList {
         }
     }
 
+    //leetcode submit region begin(Prohibit modification and deletion)
     class Solution {
         public ListNode removeNthFromEnd(ListNode head, int n) {
+            ListNode p1 = new ListNode(-1);
+            p1.next = head;
+            head = p1;
+            while (n-- != 0) {
+                p1 = p1.next;
+            }
+            ListNode p2 = head;
+            while (p1.next != null){
+                p1 = p1.next;
+                p2 = p2.next;
+            }
+            p2.next = p2.next.next;
+            return head.next;
 
         }
     }
-//leetcode submit region end(Prohibit modification and deletion)
+    //leetcode submit region end(Prohibit modification and deletion)
 
-} 
+}
