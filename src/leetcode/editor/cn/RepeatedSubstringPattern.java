@@ -14,7 +14,7 @@ public class RepeatedSubstringPattern {
         //leetcode submit region begin(Prohibit modification and deletion)
 class Solution {
     public boolean repeatedSubstringPattern(String s) {
-
+        return false;
     }
 }
 //leetcode submit region end(Prohibit modification and deletion)

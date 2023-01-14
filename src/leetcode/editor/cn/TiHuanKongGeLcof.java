@@ -14,7 +14,15 @@ public class TiHuanKongGeLcof {
         //leetcode submit region begin(Prohibit modification and deletion)
 class Solution {
     public String replaceSpace(String s) {
-
+        StringBuffer ans = new StringBuffer();
+        for (int i = 0; i < s.length(); i++) {
+            if (s.charAt(i) == ' '){
+                ans.append("%20");
+            }else{
+                ans.append(s.charAt(i));
+            }
+        }
+        return ans.toString();
     }
 }
 //leetcode submit region end(Prohibit modification and deletion)
