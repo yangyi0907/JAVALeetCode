@@ -1,14 +1,14 @@
 package leetcode.editor.cn;
 
 /**
- * 题目Id：110
- * 题目：平衡二叉树
+ * 题目Id：404
+ * 题目：左叶子之和
  *
  * @author yangyi
  */
-public class BalancedBinaryTree {
+public class SumOfLeftLeaves {
     public static void main(String[] args) {
-        Solution solution = new BalancedBinaryTree().new Solution();
+        Solution solution = new SumOfLeftLeaves().new Solution();
     }
 
     //leetcode submit region begin(Prohibit modification and deletion)
@@ -33,29 +33,24 @@ public class BalancedBinaryTree {
     }
 
     class Solution {
-        /**
-         * 递归法
-         */
-        public boolean isBalanced(TreeNode root) {
-            return getHeight(root) != -1;
+        int ans = 0;
+
+        public int sumOfLeftLeaves(TreeNode root) {
+            dfs(root, false);
+            return ans;
         }
 
-        private int getHeight(TreeNode root) {
+        public void dfs(TreeNode root, boolean isLeaf) {
             if (root == null) {
-                return 0;
+                return;
             }
-            int l = getHeight(root.left);
-            if (l == -1) {
-                return -1;
+            if (isLeaf && root.left == null && root.right == null) {
+                ans += root.val;
+                return;
             }
-            int r = getHeight(root.right);
-            if (r == -1) {
-                return -1;
-            }
-            if (Math.abs(l - r) > 1) {
-                return -1;
-            }
-            return Math.max(l, r) + 1;
+            dfs(root.left, true);
+            dfs(root.right, false);
+
         }
     }
 //leetcode submit region end(Prohibit modification and deletion)
