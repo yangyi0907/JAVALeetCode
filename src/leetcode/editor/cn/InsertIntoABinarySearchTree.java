@@ -1,17 +1,18 @@
 package leetcode.editor.cn;
 
 /**
- * 题目Id：617
- * 题目：合并二叉树
+ * 题目Id：701
+ * 题目：二叉搜索树中的插入操作
  *
  * @author yangyi
  */
-public class MergeTwoBinaryTrees {
+public class InsertIntoABinarySearchTree {
     public static void main(String[] args) {
-        Solution solution = new MergeTwoBinaryTrees().new Solution();
+        Solution solution = new InsertIntoABinarySearchTree().new Solution();
     }
 
     //leetcode submit region begin(Prohibit modification and deletion)
+
     public class TreeNode {
         int val;
         TreeNode left;
@@ -32,21 +33,20 @@ public class MergeTwoBinaryTrees {
     }
 
     class Solution {
-        public TreeNode mergeTrees(TreeNode root1, TreeNode root2) {
-            return dfs(root1, root2);
+        public TreeNode insertIntoBST(TreeNode root, int val) {
+            return dfs(root, val);
         }
 
-        private TreeNode dfs(TreeNode root1, TreeNode root2) {
-            if (root1 == null) {
-                return root2;
+        private TreeNode dfs(TreeNode root, int val) {
+            if (root == null) {
+                return new TreeNode(val);
             }
-            if (root2 == null) {
-                return root1;
+            if (val > root.val) {
+                root.right = dfs(root.right, val);
+            } else {
+                root.left = dfs(root.left, val);
             }
-            root1.val += root2.val;
-            root1.left = dfs(root1.left, root2.left);
-            root1.right = dfs(root1.right, root2.right);
-            return root1;
+            return root;
         }
     }
 //leetcode submit region end(Prohibit modification and deletion)

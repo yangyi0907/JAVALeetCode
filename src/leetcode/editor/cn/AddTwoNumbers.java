@@ -18,6 +18,7 @@ public class AddTwoNumbers {
 class Solution {
     public ListNode addTwoNumbers(ListNode l1, ListNode l2) {
 
+        return l1;
     }
 }
 //leetcode submit region end(Prohibit modification and deletion)

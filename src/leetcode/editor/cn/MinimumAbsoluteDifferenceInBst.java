@@ -1,17 +1,18 @@
 package leetcode.editor.cn;
 
 /**
- * 题目Id：617
- * 题目：合并二叉树
+ * 题目Id：530
+ * 题目：二叉搜索树的最小绝对差
  *
  * @author yangyi
  */
-public class MergeTwoBinaryTrees {
+public class MinimumAbsoluteDifferenceInBst {
     public static void main(String[] args) {
-        Solution solution = new MergeTwoBinaryTrees().new Solution();
+        Solution solution = new MinimumAbsoluteDifferenceInBst().new Solution();
     }
 
     //leetcode submit region begin(Prohibit modification and deletion)
+
     public class TreeNode {
         int val;
         TreeNode left;
@@ -32,21 +33,22 @@ public class MergeTwoBinaryTrees {
     }
 
     class Solution {
-        public TreeNode mergeTrees(TreeNode root1, TreeNode root2) {
-            return dfs(root1, root2);
+        int pre = Integer.MAX_VALUE;
+        int ans = Integer.MAX_VALUE;
+
+        public int getMinimumDifference(TreeNode root) {
+            dfs(root);
+            return ans;
         }
 
-        private TreeNode dfs(TreeNode root1, TreeNode root2) {
-            if (root1 == null) {
-                return root2;
+        private void dfs(TreeNode root) {
+            if (root == null) {
+                return;
             }
-            if (root2 == null) {
-                return root1;
-            }
-            root1.val += root2.val;
-            root1.left = dfs(root1.left, root2.left);
-            root1.right = dfs(root1.right, root2.right);
-            return root1;
+            dfs(root.left);
+            ans = Math.min(ans, Math.abs(pre - root.val));
+            pre = root.val;
+            dfs(root.right);
         }
     }
 //leetcode submit region end(Prohibit modification and deletion)
