@@ -20,18 +20,17 @@ public class ValidParentheses {
         public boolean isValid(String s) {
             LinkedList<Character> stack = new LinkedList<>();
             Map<Character, Character> map = new HashMap<>();
+            map.put('(', ')');
             map.put('{', '}');
             map.put('[', ']');
-            map.put('(', ')');
             for (int i = 0; i < s.length(); i++) {
-                if (isLeft(s.charAt(i))) {
-                    stack.addLast(s.charAt(i));
+                char c = s.charAt(i);
+                if (isLeft(c)) {
+                    stack.addLast(c);
                 } else {
-                    if (stack.isEmpty()) {
-                        return false;
-                    }
-                    Character c = stack.removeLast();
-                    if (map.get(c) != s.charAt(i)) {
+                    if (!stack.isEmpty() && map.get(stack.peekLast()) == c) {
+                        stack.removeLast();
+                    } else {
                         return false;
                     }
                 }
@@ -39,11 +38,8 @@ public class ValidParentheses {
             return stack.isEmpty();
         }
 
-        public boolean isLeft(char c) {
-            if (c == '(' || c == '{' || c == '[') {
-                return true;
-            }
-            return false;
+        private boolean isLeft(char c) {
+            return c == '(' || c == '{' || c == '[';
         }
     }
 //leetcode submit region end(Prohibit modification and deletion)

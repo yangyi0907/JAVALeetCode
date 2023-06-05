@@ -38,4 +38,4 @@
 
 <p><strong>进阶：</strong>你能尝试使用一趟扫描实现吗？</p>
 
-<div><div>Related Topics</div><div><li>链表</li><li>双指针</li></div></div><br><div><li>👍 2355</li><li>👎 0</li></div>
+<div><div>Related Topics</div><div><li>链表</li><li>双指针</li></div></div><br><div><li>👍 2550</li><li>👎 0</li></div>

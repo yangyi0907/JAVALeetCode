@@ -17,15 +17,16 @@ public class TwoSum {
     //leetcode submit region begin(Prohibit modification and deletion)
     class Solution {
         public int[] twoSum(int[] nums, int target) {
-            Map<Integer, Integer> map = new HashMap<>();
-            for (int i = 0; i < nums.length; i++) {
-                int n = target - nums[i];
-                if (map.containsKey(n)) {
-                    return new int[]{map.get(n), i};
+            int size = nums.length;
+            Map<Integer, Integer> map = new HashMap<>(size);
+            for (int i = 0; i < size; i++) {
+                if (map.containsKey(target - nums[i])) {
+                    return new int[]{i, map.get(target - nums[i])};
+                } else {
+                    map.put(nums[i], i);
                 }
-                map.put(nums[i], i);
             }
-            return new int[]{-1, -1};
+            return new int[]{0, 0};
         }
     }
 //leetcode submit region end(Prohibit modification and deletion)
